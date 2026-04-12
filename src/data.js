@@ -21,6 +21,19 @@ const EVData = [
       { id: 'cla-ev', name: 'CLA EV', videoId: 'wxs3AwL40as' },
       { id: 'vision-iconic', name: 'Vision Iconic', videoId: 'HKIBDda0Ptk' }
     ]
+  },
+  {
+    id: 'huawei',
+    name: 'Huawei (HIMA)',
+    image: 'src/assets/huawei_brand_pic.webp',
+    description: 'Huawei Harmony Intelligent Mobility Alliance (HIMA) represents a powerful ecosystem of smart automotive sub-brands, bringing advanced HarmonyOS connectivity and autonomous driving intelligence to the road.',
+    subBrands: [
+      { id: 'aito', name: 'AITO 问界', videoId: '5-w-L_S-N8E' }, // Generic AITO representative
+      { id: 'luxeed', name: 'Luxeed 智界', videoId: 'vRE56v3N-i0' }, 
+      { id: 'stelato', name: 'STELATO 享界', videoId: 'xP-L87R1S_c' },
+      { id: 'maextro', name: 'MAEXTRO 尊界', videoId: 'wlaZWRXgB_I' },
+      { id: 'avatr', name: 'AVATR 阿维塔', videoId: 'kP-Q2X9qW1w' }
+    ]
   }
 ];
 

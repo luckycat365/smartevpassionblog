@@ -88,11 +88,28 @@ function renderBrandPage(brandId) {
         ${brand.description || ''}
       </p>
     </div>
-    <h3 style="margin-bottom: 1rem; border-bottom: 1px solid #222; padding-bottom: 1rem;">${brand.name} Models</h3>
-    <div class="grid-container">
   `;
 
-  if(brand.models && brand.models.length > 0) {
+  if (brand.subBrands) {
+    html += `
+      <h3 style="margin-bottom: 1rem; border-bottom: 1px solid #222; padding-bottom: 1rem;">Select a Sub-Brand</h3>
+      <div class="grid-container">
+    `;
+    brand.subBrands.forEach(sub => {
+      html += `
+        <div class="card brand-card" onclick="renderSubBrandPage('${brand.id}', '${sub.id}')">
+          <div class="card-video" style="display:flex; align-items:center; justify-content:center; background:#111; color:var(--accent); font-size:1.5rem; font-weight:bold;">
+             ${sub.name.split(' ')[0]}
+          </div>
+          <div class="card-title">${sub.name}</div>
+        </div>
+      `;
+    });
+  } else if (brand.models) {
+    html += `
+      <h3 style="margin-bottom: 1rem; border-bottom: 1px solid #222; padding-bottom: 1rem;">${brand.name} Models</h3>
+      <div class="grid-container">
+    `;
     brand.models.forEach(model => {
       html += `
         <div class="card model-card" style="cursor: default;">
@@ -104,7 +121,7 @@ function renderBrandPage(brandId) {
       `;
     });
   } else {
-    html += `<p style="color: var(--text-muted);">No models added yet.</p>`;
+    html += `<p style="color: var(--text-muted);">No content added yet.</p>`;
   }
 
   html += `</div>`;
@@ -113,6 +130,42 @@ function renderBrandPage(brandId) {
   if (typeof YT !== 'undefined' && YT.Player) {
     initYouTubePlayers();
   }
+}
+
+function renderSubBrandPage(brandId, subBrandId) {
+    const container = document.getElementById('app-content');
+    if(!container || typeof EVData === 'undefined') return;
+
+    const brand = EVData.find(b => b.id === brandId);
+    if(!brand || !brand.subBrands) return;
+
+    const sub = brand.subBrands.find(s => s.id === subBrandId);
+    if(!sub) return;
+
+    clearPlayers();
+
+    let html = `
+      <div class="glass-panel">
+        <button onclick="renderBrandPage('${brandId}')" style="background:var(--card-bg); color:var(--text-main); border:1px solid #333; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:bold; margin-bottom: 20px; transition: 0.2s;">
+          &larr; Back to ${brand.name}
+        </button>
+        <h2 style="font-size: 2.8rem; color: var(--accent); line-height: 1; margin-bottom: 1rem;">${sub.name}</h2>
+      </div>
+      <h3 style="margin-bottom: 1rem; border-bottom: 1px solid #222; padding-bottom: 1rem;">Models View</h3>
+      <div class="grid-container">
+        <div class="card model-card" style="cursor: default;">
+          <div class="card-video">
+            <div class="yt-placeholder" data-video-id="${sub.videoId}"></div>
+          </div>
+          <div class="card-title" style="font-size: 1rem;">Representative Curation</div>
+        </div>
+      </div>
+    `;
+
+    container.innerHTML = html;
+    if (typeof YT !== 'undefined' && YT.Player) {
+        initYouTubePlayers();
+    }
 }
 
 function navigateToBrand(id) {
@@ -135,6 +188,7 @@ if (typeof window !== 'undefined') {
   window.navigateToBrand = navigateToBrand;
   window.renderHomepage = renderHomepage;
   window.renderBrandPage = renderBrandPage;
+  window.renderSubBrandPage = renderSubBrandPage;
   
   document.addEventListener('DOMContentLoaded', () => {
     // If API already loaded before DOM
