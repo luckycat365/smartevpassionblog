@@ -1,6 +1,43 @@
+let players = [];
+
+function clearPlayers() {
+  players = [];
+}
+
+function initYouTubePlayers() {
+  const placeholders = document.querySelectorAll('.yt-placeholder');
+  placeholders.forEach((el, index) => {
+    const videoId = el.getAttribute('data-video-id');
+    const player = new YT.Player(el, {
+      height: '100%',
+      width: '100%',
+      videoId: videoId,
+      playerVars: {
+        'rel': 0,
+        'modestbranding': 1
+      },
+      events: {
+        'onStateChange': (event) => {
+          if (event.data === YT.PlayerState.PLAYING) {
+            // Stop all other players
+            players.forEach(p => {
+              if (p !== player && p.getPlayerState() === YT.PlayerState.PLAYING) {
+                p.pauseVideo();
+              }
+            });
+          }
+        }
+      }
+    });
+    players.push(player);
+  });
+}
+
 function renderHomepage() {
   const container = document.getElementById('app-content');
   if(!container) return;
+  
+  clearPlayers();
 
   let html = `
     <div class="glass-panel">
@@ -13,9 +50,9 @@ function renderHomepage() {
   if(typeof EVData !== 'undefined') {
     EVData.forEach(brand => {
       html += `
-        <div class="card brand-card" data-id="${brand.id}" onclick="navigateToBrand('${brand.id}')">
+        <div class="card brand-card" data-id="${brand.id}" onclick="navigateToBrand('${brand.id}', event)">
           <div class="card-video">
-            <iframe src="https://www.youtube.com/embed/${brand.representativeVideoId}?rel=0" loading="lazy" allowfullscreen></iframe>
+            <div class="yt-placeholder" data-video-id="${brand.representativeVideoId}"></div>
           </div>
           <div class="card-title">${brand.name}</div>
         </div>
@@ -25,6 +62,11 @@ function renderHomepage() {
 
   html += `</div>`;
   container.innerHTML = html;
+  
+  // Give YT API a moment to be ready if it was just loaded
+  if (typeof YT !== 'undefined' && YT.Player) {
+    initYouTubePlayers();
+  }
 }
 
 function renderBrandPage(brandId) {
@@ -36,6 +78,8 @@ function renderBrandPage(brandId) {
     renderHomepage();
     return;
   }
+  
+  clearPlayers();
 
   let html = `
     <div class="glass-panel">
@@ -54,9 +98,9 @@ function renderBrandPage(brandId) {
   if(brand.models && brand.models.length > 0) {
     brand.models.forEach(model => {
       html += `
-        <div class="card model-card">
+        <div class="card model-card" style="cursor: default;">
           <div class="card-video">
-            <iframe src="https://www.youtube.com/embed/${model.videoId}?rel=0" loading="lazy" allowfullscreen></iframe>
+            <div class="yt-placeholder" data-video-id="${model.videoId}"></div>
           </div>
           <div class="card-title" style="font-size: 1rem;">${model.name}</div>
         </div>
@@ -68,15 +112,30 @@ function renderBrandPage(brandId) {
 
   html += `</div>`;
   container.innerHTML = html;
+  
+  if (typeof YT !== 'undefined' && YT.Player) {
+    initYouTubePlayers();
+  }
 }
 
-function navigateToBrand(id) {
+function navigateToBrand(id, event) {
+  // If user clicked the video area, don't navigate (stay on home)
+  if (event && (event.target.closest('.card-video') || event.target.tagName === 'IFRAME')) {
+      return;
+  }
   renderBrandPage(id);
 }
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { renderHomepage, renderBrandPage, navigateToBrand };
 }
+
+// Global Callback for YouTube API
+window.onYouTubeIframeAPIReady = function() {
+  if (typeof window !== 'undefined' && typeof EVData !== 'undefined') {
+      renderHomepage();
+  }
+};
 
 // Browser Initialization
 if (typeof window !== 'undefined') {
@@ -85,7 +144,10 @@ if (typeof window !== 'undefined') {
   window.renderBrandPage = renderBrandPage;
   
   document.addEventListener('DOMContentLoaded', () => {
-    if(typeof EVData !== 'undefined') renderHomepage();
+    // If API already loaded before DOM
+    if (typeof YT !== 'undefined' && YT.Player) {
+       renderHomepage();
+    }
     
     // Attach logo handler
     const logo = document.getElementById('logo');
