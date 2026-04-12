@@ -98,8 +98,8 @@ function renderBrandPage(brandId) {
     brand.subBrands.forEach(sub => {
       html += `
         <div class="card brand-card" onclick="renderSubBrandPage('${brand.id}', '${sub.id}')">
-          <div class="card-video" style="display:flex; align-items:center; justify-content:center; background:#111; color:var(--accent); font-size:1.5rem; font-weight:bold;">
-             ${sub.name.split(' ')[0]}
+          <div class="card-video">
+             <img src="${sub.image}" alt="${sub.name}" style="width:100%; height:100%; object-fit:cover;">
           </div>
           <div class="card-title">${sub.name}</div>
         </div>

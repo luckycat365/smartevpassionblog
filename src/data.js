@@ -28,11 +28,11 @@ const EVData = [
     image: 'src/assets/Huawei brand pic.webp',
     description: 'Huawei Harmony Intelligent Mobility Alliance (HIMA) represents a powerful ecosystem of smart automotive sub-brands, bringing advanced HarmonyOS connectivity and autonomous driving intelligence to the road.',
     subBrands: [
-      { id: 'aito', name: 'AITO 问界', videoId: '5-w-L_S-N8E' }, // Generic AITO representative
-      { id: 'luxeed', name: 'Luxeed 智界', videoId: 'vRE56v3N-i0' }, 
-      { id: 'stelato', name: 'STELATO 享界', videoId: 'xP-L87R1S_c' },
-      { id: 'maextro', name: 'MAEXTRO 尊界', videoId: 'wlaZWRXgB_I' },
-      { id: 'avatr', name: 'AVATR 阿维塔', videoId: 'kP-Q2X9qW1w' }
+      { id: 'aito', name: 'AITO 问界', videoId: '5-w-L_S-N8E', image: 'src/assets/Huawei subbrand AITO.jpg' },
+      { id: 'luxeed', name: 'Luxeed 智界', videoId: 'vRE56v3N-i0', image: 'src/assets/Huawei subbrand Luxeed.webp' }, 
+      { id: 'stelato', name: 'STELATO 享界', videoId: 'xP-L87R1S_c', image: 'src/assets/Huawei Subbrand Stelato.jpg' },
+      { id: 'maextro', name: 'MAEXTRO 尊界', videoId: 'wlaZWRXgB_I', image: 'src/assets/Huawei Subbrand Maextro.png' },
+      { id: 'avatr', name: 'AVATR 阿维塔', videoId: 'kP-Q2X9qW1w', image: 'src/assets/Huawei subbrand Avatr.webp' }
     ]
   }
 ];
