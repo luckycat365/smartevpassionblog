@@ -13,7 +13,7 @@ const EVData = [
     id: 'mercedes',
     name: 'Mercedes-Benz',
     representativeVideoId: 'Wa3V8f_iprY',
-    description: 'Mercedes-Benz EQ line brings their historic luxury legacy into the electric era with aerodynamic designs and opulent interiors.',
+    description: 'Mercedes-Benz new EV design language brings their historic luxury legacy into the electric era with aerodynamic designs and opulent interiors.',
     models: [
       { id: 'glc-ev', name: 'GLC EV', videoId: '9gSWNybiE1c' }, 
       { id: 'cla-ev', name: 'CLA EV', videoId: 'wxs3AwL40as' },
