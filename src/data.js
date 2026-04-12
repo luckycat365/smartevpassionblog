@@ -15,8 +15,9 @@ const EVData = [
     representativeVideoId: 'Wa3V8f_iprY',
     description: 'Mercedes-Benz EQ line brings their historic luxury legacy into the electric era with aerodynamic designs and opulent interiors.',
     models: [
-      { id: 'eqs', name: 'EQS Sedan', videoId: 'N9cWe8n6P8U' }, 
-      { id: 'eqe', name: 'EQE SUV', videoId: 'vT3Ztd2W6q8' } 
+      { id: 'glc-ev', name: 'GLC EV', videoId: '9gSWNybiE1c' }, 
+      { id: 'cla-ev', name: 'CLA EV', videoId: 'wxs3AwL40as' },
+      { id: 'vision-iconic', name: 'Vision Iconic', videoId: 'HKIBDda0Ptk' }
     ]
   }
 ];
