@@ -1,10 +1,10 @@
 let gameLoop;
 let isGameRunning = false;
 
-const GAME_WIDTH = 400;
+const GAME_WIDTH = 600;
 const GAME_HEIGHT = 600;
 
-let car = { x: 200, y: 500, width: 40, height: 70, speed: 0, maxSpeed: 10, accel: 0.2, friction: 0.95 };
+let car = { x: 300 - 20, y: 500, width: 40, height: 70, speed: 0, maxSpeed: 10, accel: 0.2, friction: 0.95 };
 let obstacles = [];
 let frameCount = 0;
 let score = 0;
@@ -17,7 +17,7 @@ const playerImg = new Image();
 playerImg.src = 'src/assets/player_cyber_car.png';
 
 const enemyImg = new Image();
-enemyImg.src = 'src/assets/enemy_cyber_car.png';
+enemyImg.src = 'src/assets/obstacles.png';
 
 const bgMusic = new Audio('src/assets/music/American Patrol.mp3');
 bgMusic.loop = true;

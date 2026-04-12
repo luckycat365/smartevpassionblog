@@ -219,7 +219,7 @@ function renderGamePage() {
       </div>
       
       <div class="game-container">
-        <canvas id="gameCanvas" width="400" height="600"></canvas>
+        <canvas id="gameCanvas" width="600" height="600"></canvas>
         
         <div class="mobile-controls">
            <button class="control-btn up-btn" onmousedown="setGameKey('ArrowUp', true)" onmouseup="setGameKey('ArrowUp', false)" onmouseleave="setGameKey('ArrowUp', false)" ontouchstart="setGameKey('ArrowUp', true)" ontouchend="setGameKey('ArrowUp', false)">&#9650;</button>
