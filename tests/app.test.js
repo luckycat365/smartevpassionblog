@@ -5,8 +5,17 @@ const fs = require('fs');
 const path = require('path');
 
 global.EVData = [
-  { id: 'test1', name: 'Test Brand', representativeVideoId: '12345', models: [] }
+  { id: 'test1', name: 'Test Brand', representativeVideoId: '12345', image: 'test.png', models: [] }
 ];
+
+// Mock YouTube API
+global.YT = {
+    Player: jest.fn().mockImplementation(() => ({
+        getPlayerState: jest.fn(),
+        pauseVideo: jest.fn()
+    })),
+    PlayerState: { PLAYING: 1, PAUSED: 2 }
+};
 
 describe('App Rendering', () => {
   beforeEach(() => {
@@ -23,7 +32,7 @@ describe('App Rendering', () => {
     renderHomepage();
     const container = document.getElementById('app-content');
     expect(container.innerHTML).toContain('Test Brand');
-    expect(container.innerHTML).toContain('youtube.com/embed/12345');
+    expect(container.innerHTML).toContain('src="test.png"');
   });
 
   test('Renders inner brand page', () => {
