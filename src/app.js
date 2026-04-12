@@ -19,7 +19,6 @@ function initYouTubePlayers() {
       events: {
         'onStateChange': (event) => {
           if (event.data === YT.PlayerState.PLAYING) {
-            // Stop all other players
             players.forEach(p => {
               if (p !== player && p.getPlayerState() === YT.PlayerState.PLAYING) {
                 p.pauseVideo();
@@ -31,6 +30,29 @@ function initYouTubePlayers() {
     });
     players.push(player);
   });
+}
+
+// Router Logic
+function handleRoute() {
+  // Normalize path: remove leading # and /
+  const path = window.location.hash.replace(/^#\/?/, '').split('?')[0];
+  const parts = path.split('/').filter(p => p !== '');
+
+  console.log('Routing to parts:', parts);
+
+  if (parts.length === 0) {
+    renderHomepage();
+  } else if (parts.length === 1) {
+    renderBrandPage(parts[0]);
+  } else if (parts.length === 2) {
+    renderSubBrandPage(parts[0], parts[1]);
+  } else {
+    renderHomepage();
+  }
+}
+
+function navigateTo(path) {
+    window.location.hash = '/' + path.replace(/^\//, '');
 }
 
 function renderHomepage() {
@@ -46,7 +68,7 @@ function renderHomepage() {
   if(typeof EVData !== 'undefined') {
     EVData.forEach(brand => {
       html += `
-        <div class="card brand-card" data-id="${brand.id}" onclick="navigateToBrand('${brand.id}')">
+        <div class="card brand-card" onclick="navigateTo('${brand.id}')">
           <div class="card-video">
             <img src="${brand.image}" alt="${brand.name}" style="width:100%; height:100%; object-fit:cover;">
           </div>
@@ -58,8 +80,6 @@ function renderHomepage() {
 
   html += `</div>`;
   container.innerHTML = html;
-  
-  // No players to init on homepage anymore
 }
 
 function renderBrandPage(brandId) {
@@ -68,22 +88,23 @@ function renderBrandPage(brandId) {
 
   const brand = EVData.find(b => b.id === brandId);
   if(!brand) {
-    renderHomepage();
+    console.error('Brand not found:', brandId);
+    navigateTo('');
     return;
   }
   
   clearPlayers();
 
   let html = `
-    <div class="glass-panel">
-      <button onclick="renderHomepage()" style="background:var(--card-bg); color:var(--text-main); border:1px solid #333; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:bold; margin-bottom: 20px; transition: 0.2s;">
-        &larr; Back to Brands
-      </button>
-      <h2 style="font-size: 2.8rem; color: var(--accent); line-height: 1; margin-bottom: 1rem;">${brand.name}</h2>
-      <p style="color: var(--text-main); font-size: 1.2rem; max-width: 900px;">
-        ${brand.description || ''}
-      </p>
-    </div>
+      <div class="glass-panel">
+        <h2 style="font-size: 2.8rem; color: var(--accent); line-height: 1; margin-bottom: 1rem;">${brand.name}</h2>
+        <p style="color: var(--text-main); font-size: 1.2rem; max-width: 900px; margin-bottom: 1.5rem;">
+          ${brand.description || ''}
+        </p>
+        <button onclick="navigateTo('')" class="back-button">
+          &larr; Back to Brands
+        </button>
+      </div>
   `;
 
   if (brand.subBrands) {
@@ -93,7 +114,7 @@ function renderBrandPage(brandId) {
     `;
     brand.subBrands.forEach(sub => {
       html += `
-        <div class="card brand-card" onclick="renderSubBrandPage('${brand.id}', '${sub.id}')">
+        <div class="card brand-card" onclick="navigateTo('${brand.id}/${sub.id}')">
           <div class="card-video">
              <img src="${sub.image}" alt="${sub.name}" style="width:100%; height:100%; object-fit:cover;">
           </div>
@@ -142,10 +163,10 @@ function renderSubBrandPage(brandId, subBrandId) {
 
     let html = `
       <div class="glass-panel">
-        <button onclick="renderBrandPage('${brandId}')" style="background:var(--card-bg); color:var(--text-main); border:1px solid #333; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:bold; margin-bottom: 20px; transition: 0.2s;">
+        <h2 style="font-size: 2.8rem; color: var(--accent); line-height: 1; margin-bottom: 1.5rem;">${sub.name}</h2>
+        <button onclick="navigateTo('${brandId}')" class="back-button">
           &larr; Back to ${brand.name}
         </button>
-        <h2 style="font-size: 2.8rem; color: var(--accent); line-height: 1; margin-bottom: 1rem;">${sub.name}</h2>
       </div>
       <h3 style="margin-bottom: 1rem; border-bottom: 1px solid #222; padding-bottom: 1rem;">Models View</h3>
       <div class="grid-container">
@@ -180,38 +201,35 @@ function renderSubBrandPage(brandId, subBrandId) {
     }
 }
 
-function navigateToBrand(id) {
-  renderBrandPage(id);
-}
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { renderHomepage, renderBrandPage, navigateToBrand };
-}
-
 // Global Callback for YouTube API
 window.onYouTubeIframeAPIReady = function() {
   if (typeof window !== 'undefined' && typeof EVData !== 'undefined') {
-      renderHomepage();
+      handleRoute();
   }
 };
 
 // Browser Initialization
 if (typeof window !== 'undefined') {
-  window.navigateToBrand = navigateToBrand;
+  window.navigateTo = navigateTo;
   window.renderHomepage = renderHomepage;
   window.renderBrandPage = renderBrandPage;
   window.renderSubBrandPage = renderSubBrandPage;
   
+  window.addEventListener('hashchange', handleRoute);
+
   document.addEventListener('DOMContentLoaded', () => {
-    // If API already loaded before DOM
     if (typeof YT !== 'undefined' && YT.Player) {
-       renderHomepage();
+       handleRoute();
     }
     
     // Attach logo handler
     const logo = document.getElementById('logo');
     if(logo) {
-      logo.addEventListener('click', () => renderHomepage());
+      logo.addEventListener('click', () => navigateTo(''));
     }
   });
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { renderHomepage, renderBrandPage, navigateTo };
 }
