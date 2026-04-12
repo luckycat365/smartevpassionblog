@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 global.EVData = [
-  { id: 'test1', name: 'Test Brand', representativeVideoId: '12345', models: [] }
+  { id: 'test1', name: 'Test Brand', representativeVideoId: '12345', image: 'test.png', models: [] }
 ];
 
 // Mock YouTube API
@@ -32,7 +32,7 @@ describe('App Rendering', () => {
     renderHomepage();
     const container = document.getElementById('app-content');
     expect(container.innerHTML).toContain('Test Brand');
-    expect(container.innerHTML).toContain('data-video-id="12345"');
+    expect(container.innerHTML).toContain('src="test.png"');
   });
 
   test('Renders inner brand page', () => {

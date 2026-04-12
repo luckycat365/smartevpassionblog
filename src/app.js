@@ -50,9 +50,9 @@ function renderHomepage() {
   if(typeof EVData !== 'undefined') {
     EVData.forEach(brand => {
       html += `
-        <div class="card brand-card" data-id="${brand.id}" onclick="navigateToBrand('${brand.id}', event)">
+        <div class="card brand-card" data-id="${brand.id}" onclick="navigateToBrand('${brand.id}')">
           <div class="card-video">
-            <div class="yt-placeholder" data-video-id="${brand.representativeVideoId}"></div>
+            <img src="${brand.image}" alt="${brand.name}" style="width:100%; height:100%; object-fit:cover;">
           </div>
           <div class="card-title">${brand.name}</div>
         </div>
@@ -63,10 +63,7 @@ function renderHomepage() {
   html += `</div>`;
   container.innerHTML = html;
   
-  // Give YT API a moment to be ready if it was just loaded
-  if (typeof YT !== 'undefined' && YT.Player) {
-    initYouTubePlayers();
-  }
+  // No players to init on homepage anymore
 }
 
 function renderBrandPage(brandId) {
@@ -118,11 +115,7 @@ function renderBrandPage(brandId) {
   }
 }
 
-function navigateToBrand(id, event) {
-  // If user clicked the video area, don't navigate (stay on home)
-  if (event && (event.target.closest('.card-video') || event.target.tagName === 'IFRAME')) {
-      return;
-  }
+function navigateToBrand(id) {
   renderBrandPage(id);
 }
 
