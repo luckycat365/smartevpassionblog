@@ -3,8 +3,10 @@ function renderHomepage() {
   if(!container) return;
 
   let html = `
-    <h2 style="font-size: 2.5rem;">Select a Manufacturer</h2>
-    <p style="color: var(--text-muted); margin-bottom: 2rem;">Explore representative videos and dive into models.</p>
+    <div class="glass-panel">
+      <h2 style="font-size: 2.5rem; margin: 0;">Select a Manufacturer</h2>
+      <p style="color: var(--text-muted); margin-top: 0.5rem;">Explore representative videos and dive into models.</p>
+    </div>
     <div class="grid-container">
   `;
 
@@ -36,12 +38,12 @@ function renderBrandPage(brandId) {
   }
 
   let html = `
-    <div style="margin-bottom: 2rem;">
+    <div class="glass-panel">
       <button onclick="renderHomepage()" style="background:var(--card-bg); color:var(--text-main); border:1px solid #333; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:bold; margin-bottom: 20px; transition: 0.2s;">
         &larr; Back to Brands
       </button>
-      <h2 style="font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem">${brand.name}</h2>
-      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin-top: 10px;">
+      <h2 style="font-size: 2.8rem; color: var(--accent); line-height: 1; margin-bottom: 1rem;">${brand.name}</h2>
+      <p style="color: var(--text-main); font-size: 1.2rem; max-width: 900px;">
         ${brand.description || ''}
       </p>
     </div>
