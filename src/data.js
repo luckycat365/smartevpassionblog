@@ -1,16 +1,5 @@
 const EVData = [
   {
-    id: 'byd',
-    name: 'BYD',
-    representativeVideoId: 'abQ3z3uCauo',
-    image: 'src/assets/BYD brand pic.webp',
-    description: 'Build Your Dreams (BYD) has rapidly grown to become a dominant force in the global EV market. They blend affordability with impressive battery technology (Blade Battery).',
-    models: [
-      { id: 'seal', name: 'BYD Seal', videoId: 'heXMDCoPjHA' }, 
-      { id: 'atto3', name: 'BYD Atto 3', videoId: 'YolSvZPMW0c' } 
-    ]
-  },
-  {
     id: 'mercedes',
     name: 'Mercedes-Benz',
     representativeVideoId: 'Wa3V8f_iprY',
@@ -20,6 +9,28 @@ const EVData = [
       { id: 'glc-ev', name: 'GLC EV', videoId: '9gSWNybiE1c' }, 
       { id: 'cla-ev', name: 'CLA EV', videoId: 'wxs3AwL40as' },
       { id: 'vision-iconic', name: 'Vision Iconic', videoId: 'HKIBDda0Ptk' }
+    ]
+  },
+  {
+    id: 'tesla',
+    name: 'Tesla',
+    image: 'src/assets/Tesla brand.jpg',
+    description: 'Tesla leads the world in electric vehicle innovation, high-performance battery technology, and a global supercharging network that makes long-distance travel effortless.',
+    models: [
+      { id: 'model-3', name: 'Model 3 Performance', videoId: 'krQKnhMwxn4' },
+      { id: 'model-y', name: 'Model Y', videoId: 'iPJDW5EaIzE' },
+      { id: 'cybertruck', name: 'Cybertruck', videoId: 'DsonSEllPmU' }
+    ]
+  },
+  {
+    id: 'byd',
+    name: 'BYD',
+    representativeVideoId: 'abQ3z3uCauo',
+    image: 'src/assets/BYD brand pic.webp',
+    description: 'Build Your Dreams (BYD) has rapidly grown to become a dominant force in the global EV market. They blend affordability with impressive battery technology (Blade Battery).',
+    models: [
+      { id: 'seal', name: 'BYD Seal', videoId: 'heXMDCoPjHA' }, 
+      { id: 'atto3', name: 'BYD Atto 3', videoId: 'YolSvZPMW0c' } 
     ]
   },
   {

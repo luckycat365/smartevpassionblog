@@ -40,10 +40,6 @@ function renderHomepage() {
   clearPlayers();
 
   let html = `
-    <div class="glass-panel">
-      <h2 style="font-size: 2.5rem; margin: 0;">Select a Manufacturer</h2>
-      <p style="color: var(--text-muted); margin-top: 0.5rem;">Explore representative videos and dive into models.</p>
-    </div>
     <div class="grid-container">
   `;
 
