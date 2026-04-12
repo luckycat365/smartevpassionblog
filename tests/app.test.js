@@ -25,4 +25,13 @@ describe('App Rendering', () => {
     expect(container.innerHTML).toContain('Test Brand');
     expect(container.innerHTML).toContain('youtube.com/embed/12345');
   });
+
+  test('Renders inner brand page', () => {
+    const { renderBrandPage } = require('../src/app.js');
+    renderBrandPage('test1');
+    const container = document.getElementById('app-content');
+    expect(container.innerHTML).not.toContain('Select a Manufacturer');
+    expect(container.innerHTML).toContain('Test Brand');
+    expect(container.innerHTML).toContain('Models');
+  });
 });
