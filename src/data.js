@@ -16,10 +16,51 @@ const EVData = [
     name: 'Tesla',
     image: 'src/assets/Tesla brand.jpg',
     description: 'Tesla leads the world in electric vehicle innovation, high-performance battery technology, and a global supercharging network that makes long-distance travel effortless.',
+    subBrands: [
+      {
+        id: 'fleet',
+        name: 'Model Fleet',
+        image: 'src/assets/Tesla brand.jpg',
+        models: [
+          { id: 'model-3', name: 'Model 3 Performance', videoId: 'krQKnhMwxn4' },
+          { id: 'model-y', name: 'Model Y', videoId: 'iPJDW5EaIzE' },
+          { id: 'cybertruck', name: 'Cybertruck', videoId: 'DsonSEllPmU' }
+        ]
+      },
+      {
+        id: 'fsd',
+        name: 'Tesla FSD',
+        image: 'src/assets/TeslaFSDPicture.webp',
+        models: [
+          { id: 'fsd-14-3', name: 'FSD V14.3', videoId: 'oV-fAXaWqhg' }
+        ]
+      },
+      {
+        id: 'optimus',
+        name: 'Optimus',
+        image: 'src/assets/optimuspicture.webp',
+        models: [
+          { id: 'optimus-v2', name: 'Optimus Gen 2', videoId: 'cpraXaw7dyc' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'nio',
+    name: 'NIO',
+    image: 'src/assets/Nio brand.webp',
+    description: 'NIO is a pioneer in the premium smart electric vehicle market, renowned for its innovative battery as a service (BaaS) and luxury autonomous driving experiences.',
     models: [
-      { id: 'model-3', name: 'Model 3 Performance', videoId: 'krQKnhMwxn4' },
-      { id: 'model-y', name: 'Model Y', videoId: 'iPJDW5EaIzE' },
-      { id: 'cybertruck', name: 'Cybertruck', videoId: 'DsonSEllPmU' }
+      { id: 'es9', name: 'Nio ES9', videoId: 'X4Pn9m2sEYA' }
+    ]
+  },
+  {
+    id: 'xpeng',
+    name: 'XPENG',
+    image: 'src/assets/xpeng brand.jpg',
+    description: 'XPENG is a leading AI car company that designs, develops, manufactures and markets smart electric vehicles that appeal to the large and growing base of technology-savvy consumers.',
+    models: [
+      { id: 'p7', name: 'Xpeng P7', videoId: 'uELL3fAwlwU' }
     ]
   },
   {
