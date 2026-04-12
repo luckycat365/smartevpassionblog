@@ -24,8 +24,8 @@ const EVData = [
   },
   {
     id: 'huawei',
-    name: 'Huawei (HIMA)',
-    image: 'src/assets/huawei_brand_pic.webp',
+    name: 'Huawei',
+    image: 'src/assets/Huawei brand pic.webp',
     description: 'Huawei Harmony Intelligent Mobility Alliance (HIMA) represents a powerful ecosystem of smart automotive sub-brands, bringing advanced HarmonyOS connectivity and autonomous driving intelligence to the road.',
     subBrands: [
       { id: 'aito', name: 'AITO 问界', videoId: '5-w-L_S-N8E' }, // Generic AITO representative
