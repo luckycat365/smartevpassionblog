@@ -149,15 +149,31 @@ function renderSubBrandPage(brandId, subBrandId) {
       </div>
       <h3 style="margin-bottom: 1rem; border-bottom: 1px solid #222; padding-bottom: 1rem;">Models View</h3>
       <div class="grid-container">
+    `;
+
+    if (sub.models && sub.models.length > 0) {
+      sub.models.forEach(model => {
+        html += `
+          <div class="card model-card" style="cursor: default;">
+            <div class="card-video">
+              <div class="yt-placeholder" data-video-id="${model.videoId}"></div>
+            </div>
+            <div class="card-title" style="font-size: 1rem;">${model.name}</div>
+          </div>
+        `;
+      });
+    } else {
+      html += `
         <div class="card model-card" style="cursor: default;">
           <div class="card-video">
             <div class="yt-placeholder" data-video-id="${sub.videoId}"></div>
           </div>
           <div class="card-title" style="font-size: 1rem;">Representative Curation</div>
         </div>
-      </div>
-    `;
+      `;
+    }
 
+    html += `</div>`;
     container.innerHTML = html;
     if (typeof YT !== 'undefined' && YT.Player) {
         initYouTubePlayers();

@@ -39,11 +39,62 @@ const EVData = [
     image: 'src/assets/Huawei brand pic.webp',
     description: 'Huawei Harmony Intelligent Mobility Alliance (HIMA) represents a powerful ecosystem of smart automotive sub-brands, bringing advanced HarmonyOS connectivity and autonomous driving intelligence to the road.',
     subBrands: [
-      { id: 'aito', name: 'AITO 问界', videoId: '5-w-L_S-N8E', image: 'src/assets/Huawei subbrand AITO.jpg' },
-      { id: 'luxeed', name: 'Luxeed 智界', videoId: 'vRE56v3N-i0', image: 'src/assets/Huawei subbrand Luxeed.webp' }, 
-      { id: 'stelato', name: 'STELATO 享界', videoId: 'xP-L87R1S_c', image: 'src/assets/Huawei Subbrand Stelato.jpg' },
+      { 
+        id: 'aito', 
+        name: 'AITO 问界', 
+        videoId: '5-w-L_S-N8E', 
+        image: 'src/assets/Huawei subbrand AITO.jpg',
+        models: [
+          { id: 'aito-m9', name: 'AITO M9', videoId: 'NJTbeBhdEy0' }
+        ]
+      },
+      { 
+        id: 'luxeed', 
+        name: 'Luxeed 智界', 
+        videoId: 'vRE56v3N-i0', 
+        image: 'src/assets/Huawei subbrand Luxeed.webp',
+        models: [
+          { id: 'luxeed-r7', name: 'Luxeed R7', videoId: '5T2S9TSDL_A' }
+        ]
+      }, 
+      { 
+        id: 'stelato', 
+        name: 'STELATO 享界', 
+        videoId: 'xP-L87R1S_c', 
+        image: 'src/assets/Huawei Subbrand Stelato.jpg',
+        models: [
+          { id: 'stelato-s9', name: 'Stelato S9', videoId: 'YKfUGnFYcJI' }
+        ]
+      },
       { id: 'maextro', name: 'MAEXTRO 尊界', videoId: 'wlaZWRXgB_I', image: 'src/assets/Huawei Subbrand Maextro.png' },
-      { id: 'avatr', name: 'AVATR 阿维塔', videoId: 'kP-Q2X9qW1w', image: 'src/assets/Huawei subbrand Avatr.webp' }
+      { 
+        id: 'avatr', 
+        name: 'AVATR 阿维塔', 
+        videoId: 'kP-Q2X9qW1w', 
+        image: 'src/assets/Huawei subbrand Avatr.webp',
+        models: [
+          { id: 'avatr-06', name: 'Avatr 06 Touring', videoId: 'TIKZPDa-KsY' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'geely',
+    name: 'Geely',
+    image: 'src/assets/Geely Brand.jpg',
+    description: 'Geely Holding Group is a global automotive powerhouse, leading the way in electrification and smart mobility through its diverse portfolio of innovative brands.',
+    subBrands: [
+      { 
+        id: 'zeekr', 
+        name: 'Zeekr', 
+        videoId: 'h8R2C6mP3gI', 
+        image: 'src/assets/Zeekr brand.jpg',
+        models: [
+          { id: 'zeekr-9x', name: 'Zeekr 9X', videoId: 'N8oMK898K2I' }
+        ]
+      }, 
+      { id: 'lynkco', name: 'Lynk & Co', videoId: 'tWc2P7VnNnU', image: 'src/assets/bg.png' },
+      { id: 'galaxy', name: 'Galaxy', videoId: 'yv1Xn0D0f8I', image: 'src/assets/bg.png' }
     ]
   }
 ];
