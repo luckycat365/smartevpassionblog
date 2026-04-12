@@ -2,6 +2,7 @@ let players = [];
 
 function clearPlayers() {
   players = [];
+  if (typeof stopGame === 'function') stopGame();
 }
 
 function initYouTubePlayers() {
@@ -42,6 +43,8 @@ function handleRoute() {
 
   if (parts.length === 0) {
     renderHomepage();
+  } else if (parts[0] === 'game') {
+    renderGamePage();
   } else if (parts.length === 1) {
     renderBrandPage(parts[0]);
   } else if (parts.length === 2) {
@@ -199,6 +202,38 @@ function renderSubBrandPage(brandId, subBrandId) {
     if (typeof YT !== 'undefined' && YT.Player) {
         initYouTubePlayers();
     }
+}
+
+function renderGamePage() {
+    const container = document.getElementById('app-content');
+    if(!container) return;
+
+    clearPlayers();
+
+    container.innerHTML = `
+      <div class="glass-panel" style="text-align:center;">
+        <h2 style="font-size: 2.8rem; color: var(--accent); line-height: 1; margin-bottom: 1.5rem;">Cyber Racer</h2>
+        <button onclick="navigateTo('/')" class="back-button">
+          &larr; Back to Home
+        </button>
+      </div>
+      
+      <div class="game-container">
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+        
+        <div class="mobile-controls">
+           <button class="control-btn up-btn" onmousedown="setGameKey('ArrowUp', true)" onmouseup="setGameKey('ArrowUp', false)" onmouseleave="setGameKey('ArrowUp', false)" ontouchstart="setGameKey('ArrowUp', true)" ontouchend="setGameKey('ArrowUp', false)">&#9650;</button>
+           <button class="control-btn left-btn" onmousedown="setGameKey('ArrowLeft', true)" onmouseup="setGameKey('ArrowLeft', false)" onmouseleave="setGameKey('ArrowLeft', false)" ontouchstart="setGameKey('ArrowLeft', true)" ontouchend="setGameKey('ArrowLeft', false)">&#9664;</button>
+           <button class="control-btn down-btn" onmousedown="setGameKey('ArrowDown', true)" onmouseup="setGameKey('ArrowDown', false)" onmouseleave="setGameKey('ArrowDown', false)" ontouchstart="setGameKey('ArrowDown', true)" ontouchend="setGameKey('ArrowDown', false)">&#9660;</button>
+           <button class="control-btn right-btn" onmousedown="setGameKey('ArrowRight', true)" onmouseup="setGameKey('ArrowRight', false)" onmouseleave="setGameKey('ArrowRight', false)" ontouchstart="setGameKey('ArrowRight', true)" ontouchend="setGameKey('ArrowRight', false)">&#9654;</button>
+        </div>
+      </div>
+    `;
+
+    // Start game slightly later to ensure DOM is ready
+    setTimeout(() => {
+        if (typeof startGame === 'function') startGame();
+    }, 50);
 }
 
 // Global Callback for YouTube API
