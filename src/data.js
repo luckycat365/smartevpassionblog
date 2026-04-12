@@ -5,8 +5,8 @@ const EVData = [
     representativeVideoId: 'abQ3z3uCauo',
     description: 'Build Your Dreams (BYD) has rapidly grown to become a dominant force in the global EV market. They blend affordability with impressive battery technology (Blade Battery).',
     models: [
-      { id: 'seal', name: 'BYD Seal', videoId: '8hON1vMlvpQ' }, 
-      { id: 'atto3', name: 'BYD Atto 3', videoId: '5k8P1Lh1Wqw' } 
+      { id: 'seal', name: 'BYD Seal', videoId: 'heXMDCoPjHA' }, 
+      { id: 'atto3', name: 'BYD Atto 3', videoId: 'YolSvZPMW0c' } 
     ]
   },
   {
