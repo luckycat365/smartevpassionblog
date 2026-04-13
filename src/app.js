@@ -222,9 +222,7 @@ function renderGamePage() {
         <canvas id="gameCanvas" width="600" height="600"></canvas>
         
         <div class="mobile-controls">
-           <button class="control-btn up-btn" onmousedown="setGameKey('ArrowUp', true)" onmouseup="setGameKey('ArrowUp', false)" onmouseleave="setGameKey('ArrowUp', false)" ontouchstart="setGameKey('ArrowUp', true)" ontouchend="setGameKey('ArrowUp', false)">&#9650;</button>
            <button class="control-btn left-btn" onmousedown="setGameKey('ArrowLeft', true)" onmouseup="setGameKey('ArrowLeft', false)" onmouseleave="setGameKey('ArrowLeft', false)" ontouchstart="setGameKey('ArrowLeft', true)" ontouchend="setGameKey('ArrowLeft', false)">&#9664;</button>
-           <button class="control-btn down-btn" onmousedown="setGameKey('ArrowDown', true)" onmouseup="setGameKey('ArrowDown', false)" onmouseleave="setGameKey('ArrowDown', false)" ontouchstart="setGameKey('ArrowDown', true)" ontouchend="setGameKey('ArrowDown', false)">&#9660;</button>
            <button class="control-btn right-btn" onmousedown="setGameKey('ArrowRight', true)" onmouseup="setGameKey('ArrowRight', false)" onmouseleave="setGameKey('ArrowRight', false)" ontouchstart="setGameKey('ArrowRight', true)" ontouchend="setGameKey('ArrowRight', false)">&#9654;</button>
         </div>
       </div>
