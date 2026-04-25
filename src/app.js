@@ -101,8 +101,11 @@ function renderBrandPage(brandId) {
   let html = `
       <div class="glass-panel">
         <h2 style="font-size: 2.8rem; color: var(--accent); line-height: 1; margin-bottom: 1rem;">${brand.name}</h2>
-        <p style="color: var(--text-main); font-size: 1.2rem; max-width: 900px; margin-bottom: 1.5rem;">
+        <p style="color: var(--text-main); font-size: 1.2rem; max-width: 900px; margin-bottom: 0.75rem;">
           ${brand.description || ''}
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.8rem; font-style: italic; max-width: 900px; margin-bottom: 1.5rem;">
+          &#9432; This summary is AI auto-generated based on AI's perception of the brand.
         </p>
         <button onclick="navigateTo('')" class="back-button">
           &larr; Back to Brands

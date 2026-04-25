@@ -120,6 +120,16 @@ const EVData = [
     ]
   },
   {
+    id: 'xiaomi',
+    name: 'Xiaomi',
+    image: 'src/assets/Xiaomi-brand.png',
+    description: 'Xiaomi brings its consumer electronics expertise into the EV arena, delivering tech-forward smart electric vehicles that combine performance, cutting-edge connectivity, and remarkable value.',
+    models: [
+      { id: 'su7', name: 'Xiaomi Su7', videoId: 'xERGYnl_iZA' },
+      { id: 'yu7', name: 'Xiaomi Yu7', videoId: 'MbWfVSutS4A' }
+    ]
+  },
+  {
     id: 'geely',
     name: 'Geely',
     image: 'src/assets/Geely Brand.jpg',
