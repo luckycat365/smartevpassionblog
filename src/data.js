@@ -144,8 +144,24 @@ const EVData = [
           { id: 'zeekr-9x', name: 'Zeekr 9X', videoId: 'N8oMK898K2I' }
         ]
       }, 
-      { id: 'lynkco', name: 'Lynk & Co', videoId: 'tWc2P7VnNnU', image: 'src/assets/bg.png' },
-      { id: 'galaxy', name: 'Galaxy', videoId: 'yv1Xn0D0f8I', image: 'src/assets/bg.png' }
+      {
+        id: 'lynkco',
+        name: 'Lynk & Co',
+        videoId: 'tWc2P7VnNnU',
+        image: 'src/assets/LynkCo brand pic.jpg',
+        models: [
+          { id: 'lynkco-z10', name: 'Lynk & Co Z10', videoId: 'WsLi6_8wpKU' }
+        ]
+      },
+      {
+        id: 'galaxy',
+        name: 'Galaxy',
+        videoId: 'yv1Xn0D0f8I',
+        image: 'src/assets/Geely Galaxy brand pic.webp',
+        models: [
+          { id: 'galaxy-m9', name: 'Galaxy M9', videoId: 'R4Eg6XFeM1Y' }
+        ]
+      }
     ]
   }
 ];
