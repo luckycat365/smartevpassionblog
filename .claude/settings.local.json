@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C C:/PythonCodes/smartevblog add src/data.js)",
+      "Bash(git -C C:/PythonCodes/smartevblog commit -m ' *)",
+      "Bash(git -C C:/PythonCodes/smartevblog push origin feat/ev-site)"
+    ]
+  }
+}

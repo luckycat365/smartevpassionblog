@@ -96,9 +96,9 @@ body {
 }
 
 .back-button {
-  background: var(--yellow);
+  background: linear-gradient(45deg, #ffcc00, #ff6f00);
   color: #000;
-  border: 1px solid var(--yellow);
+  border: none;
   padding: 0.7rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
@@ -109,8 +109,8 @@ body {
 }
 
 .back-button:hover {
-  background: #ffdb4d; /* slightly lighter yellow */
-  box-shadow: 0 0 20px rgba(255, 204, 0, 0.6);
+  background: linear-gradient(45deg, #ffd740, #ff9100);
+  box-shadow: 0 0 20px rgba(255, 111, 0, 0.6);
   transform: translateX(-3px) scale(1.02);
 }
 
