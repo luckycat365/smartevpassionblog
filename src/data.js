@@ -1,4 +1,4 @@
-const EVData = [
+export const EVData = [
   {
     id: 'mercedes',
     name: 'Mercedes-Benz',
@@ -165,7 +165,3 @@ const EVData = [
     ]
   }
 ];
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { EVData };
-}
