@@ -13,12 +13,14 @@ const CONSTANT_SPEED = 5;
 
 let keys = { ArrowLeft: false, ArrowRight: false };
 
+const BASE = typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.BASE_URL : '/';
+
 const assets = {
-    player: { img: new Image(), src: '/smartevblog/assets/player_cyber_car.png' },
-    obstacle: { img: new Image(), src: '/smartevblog/assets/obstacles.png' },
-    battery: { img: new Image(), src: '/smartevblog/assets/Battery_cell.png' },
-    chip: { img: new Image(), src: '/smartevblog/assets/chip.png' },
-    victory: { img: new Image(), src: '/smartevblog/assets/Victory_cargame.png' }
+    player: { img: new Image(), src: `${BASE}assets/player_cyber_car.png` },
+    obstacle: { img: new Image(), src: `${BASE}assets/obstacles.png` },
+    battery: { img: new Image(), src: `${BASE}assets/Battery_cell.png` },
+    chip: { img: new Image(), src: `${BASE}assets/chip.png` },
+    victory: { img: new Image(), src: `${BASE}assets/Victory_cargame.png` }
 };
 
 // Load images
@@ -26,15 +28,15 @@ Object.values(assets).forEach(asset => {
     asset.img.src = asset.src;
 });
 
-const bgMusic = new Audio('/smartevblog/assets/music/American Patrol.mp3');
+const bgMusic = new Audio(`${BASE}assets/music/American Patrol.mp3`);
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
 
-const batterySound = new Audio('/smartevblog/assets/sound/BatterySound.wav');
+const batterySound = new Audio(`${BASE}assets/sound/BatterySound.wav`);
 batterySound.volume = 0.3;
-const chipSound = new Audio('/smartevblog/assets/sound/Chip.wav');
+const chipSound = new Audio(`${BASE}assets/sound/Chip.wav`);
 chipSound.volume = 0.3;
-const victorySound = new Audio('/smartevblog/assets/sound/Victory.wav');
+const victorySound = new Audio(`${BASE}assets/sound/Victory.wav`);
 victorySound.volume = 0.5;
 
 function handleKeyDown(e) {
