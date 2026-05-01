@@ -70,8 +70,11 @@ export const EVData = [
     image: '/smartevblog/assets/BYD brand pic.webp',
     description: 'Build Your Dreams (BYD) has rapidly grown to become a dominant force in the global EV market. They blend affordability with impressive battery technology (Blade Battery).',
     models: [
-      { id: 'seal', name: 'BYD Seal', videoId: 'heXMDCoPjHA' }, 
-      { id: 'atto3', name: 'BYD Atto 3', videoId: 'YolSvZPMW0c' } 
+      { id: 'seal', name: 'BYD Seal', videoId: 'heXMDCoPjHA' },
+      { id: 'atto3', name: 'BYD Atto 3', videoId: 'YolSvZPMW0c' },
+      { id: 'yangwang-u9', name: 'Yangwang U9', videoId: 'Fr1iwzee4-Q' },
+      { id: 'yangwang-u8', name: 'Yangwang U8', videoId: 'CDN3lxcLfNo' },
+      { id: 'sealion-7', name: 'BYD Sealion 7', videoId: 'y0ai-606_Sc' }
     ]
   },
   {
@@ -107,7 +110,14 @@ export const EVData = [
           { id: 'stelato-s9', name: 'Stelato S9', videoId: 'YKfUGnFYcJI' }
         ]
       },
-      { id: 'maextro', name: 'MAEXTRO 尊界', videoId: 'wlaZWRXgB_I', image: '/smartevblog/assets/Huawei Subbrand Maextro.png' },
+      {
+        id: 'maextro',
+        name: 'MAEXTRO 尊界',
+        image: '/smartevblog/assets/Huawei Subbrand Maextro.png',
+        models: [
+          { id: 'maextro-s800', name: 'Maextro S800', videoId: 'wlaZWRXgB_I' }
+        ]
+      },
       { 
         id: 'avatr', 
         name: 'AVATR 阿维塔', 
@@ -162,6 +172,24 @@ export const EVData = [
           { id: 'galaxy-m9', name: 'Galaxy M9', videoId: 'R4Eg6XFeM1Y' }
         ]
       }
+    ]
+  },
+  {
+    id: 'dreame',
+    name: 'Dreame',
+    image: '/smartevblog/assets/Dreame brand.png',
+    description: 'Dreame Technology, a Chinese company founded in 2017 and primarily known for its high-performance smart vacuum cleaners, hair dryers, and robotic appliances, officially entered the automotive sector in August 2025. Dreame is leveraging its expertise in high-speed motors, AI algorithms, and robotics to develop a range of EVs',
+    models: [
+      { id: 'kosmera-nebula-1', name: 'Kosmera Nebula 1', videoId: 'LrbRKb3XFNI' }
+    ]
+  },
+  {
+    id: 'voyah',
+    name: 'Voyah 岚图',
+    image: '/smartevblog/assets/voyah brand.jpg',
+    description: '',
+    models: [
+      { id: 'voyah-taishan', name: 'Voyah Taishan', videoId: 'CN_Ar-Mcpfs' }
     ]
   }
 ];
